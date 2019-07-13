@@ -1,12 +1,12 @@
 package titan.trio.coghackvtokens;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,39 +15,43 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import titan.trio.coghackvtokens.Model.UserDetail;
+
 
 public class Register extends AppCompatActivity {
 
-    TextView txtPhone;
-    TextView txtEmail;
-    TextView txtPassword;
-    TextView txtName;
-    TextView txtGender;
+    private FirebaseAuth mAuth;
+
+    EditText txtPassword;
     TextView btnLogin;
     Button btnSignup;
     Spinner country;
 
-    TextView etNativeLanguage;
     EditText etName;
-    EditText etAge;
-    EditText etSex;
     EditText etNumber;
     EditText etEmail;
-    TextView etInvalid;
-    Button signUp;
 
 
-    String nativeLanguage, name, age, sex, number, email;
+    String countryy, name, number, email, password;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        txtPhone = findViewById(R.id.txtPhone);
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPassword = findViewById(R.id.txtPassword);
-        txtName = findViewById(R.id.txtName);
-        txtGender = findViewById(R.id.txtGender);
+        mAuth = FirebaseAuth.getInstance();
+
+        etNumber = findViewById(R.id.edtPhone);
+        etEmail = findViewById(R.id.edtEmail);
+        txtPassword = findViewById(R.id.edtPassword);
+        etName = findViewById(R.id.edtName);
         btnLogin = findViewById(R.id.btnLogin);
         btnSignup = findViewById(R.id.btnSignup);
         country = findViewById(R.id.spinnerCountry);
@@ -82,9 +86,34 @@ public class Register extends AppCompatActivity {
     }
 
     void signUp() {
-
-        if (name != null && !name.isEmpty() && !number.isEmpty() && number.length() == 10 && age != null && !age.isEmpty() && sex != null && !sex.isEmpty() && number != null && nativeLanguage != null && !nativeLanguage.isEmpty() && email != null && !email.isEmpty()) {
-
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("user");
+        name = etName.getText().toString().trim();
+        number = etNumber.getText().toString().trim();
+        email = etEmail.getText().toString().trim();
+        password = txtPassword.getText().toString().trim();
+        if (name != null && !name.isEmpty() && !number.isEmpty() && number.length() == 10 && number != null && email != null && !email.isEmpty()) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("SignUpSuccess", "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                String id = user.getUid();
+                                UserDetail usd = new UserDetail(name, number, "male", "0", "0");
+                                myRef.child(id).child("detail").setValue(usd);
+                                startActivity(new Intent(Register.this, MainActivity.class));
+                                finish();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.e("failSignUp", "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(Register.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
         }
     }
 

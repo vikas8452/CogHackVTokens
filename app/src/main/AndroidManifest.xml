@@ -18,6 +18,7 @@
         <activity android:name=".BlackJack" />
         <activity android:name=".OrderFood.OrderFood" />
         <activity android:name=".AmountAvail" />
+        <activity android:name=".OrderFood.OrderFood" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
