@@ -7,19 +7,23 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Pay Using Tokens" />
+            android:title="Pay" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Wallet Amount" />
+            android:title="Wallet" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Play a Game" />
+            android:title="Play Games" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Book a Room" />
+            android:title="Book Rooms" />
+        <item
+            android:id="@+id/nav_order_food"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_order_food" />
     </group>
 
     <item android:title="Communicate">

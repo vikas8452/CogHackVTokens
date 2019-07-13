@@ -13,4 +13,33 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="register"><u>Register</u></string>
+    <string name="phone_no">Phone No.</string>
+    <string name="email">Email</string>
+    <string name="gender">Gender</string>
+    <string name="txt_country">Select your Country</string>
+    <string name="signup">Sign Up</string>
+    <string name="login_underlined"><u>Login</u></string>
+    <string name="password">Password</string>
+    <string name="join_with_facebook">Join with Facebook</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="email_phone_no">Email/Phone No.</string>
+    <string name="forgot_password"><u>Forgot password</u></string>
+    <string name="Lbl_Login">Login</string>
+    <string name="name">Full Name</string>
+    <string name="Lbl_Register">Sign Up</string>
+    <string name="menu_order_food">Order Food</string>
+    <string-array name="nationality_array">
+        <item>India</item>
+        <item>Australia</item>
+        <item>Japan</item>
+        <item>USA</item>
+        <item>UK</item>
+    </string-array>
+
+    <string name="now">NOW</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="staying_up_late_let_us_serve_you">Staying up late? Let us serve you.</string>
 </resources>

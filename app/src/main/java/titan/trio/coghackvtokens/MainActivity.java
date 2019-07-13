@@ -25,6 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import titan.trio.coghackvtokens.OrderFood.OrderFood;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
@@ -122,6 +124,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_order_food) {
+            startActivity(new Intent(MainActivity.this, OrderFood.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

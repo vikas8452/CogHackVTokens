@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_centerInParent="true">
+
+    <TextView
+        android:id="@+id/availableBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Available Balance : 1000"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/payBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount to be paid : 1000"
+        android:layout_below="@+id/availableBalance"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payBalance"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:text="Confirm"
+        android:textColor="#03928D"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payBalance"
+        android:layout_toLeftOf="@+id/confirm"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Cancel"
+        android:textColor="#03928D"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+</RelativeLayout>

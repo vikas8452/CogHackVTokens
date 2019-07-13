@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:background="@drawable/blj"
+    tools:context=".BlackJack">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="BlackJack"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:fontFamily="sans-serif-smallcaps" />
+
+    <TextView
+        android:id="@+id/txtBet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        android:text="Bet Amount"
+        android:textColor="#D8EEA8A8"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtBetAmmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtBet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#D5D3D3"
+        android:ems="9"
+        android:hint="1234"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btnBet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtBetAmmount"
+        android:layout_centerHorizontal="true"
+        android:text="Bet"
+        android:ems="10"
+        android:layout_marginTop="50dp"/>
+
+</RelativeLayout>
