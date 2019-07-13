@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RadioButton
+        android:id="@+id/rd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cash" />
+
+    <RadioButton
+        android:id="@+id/rd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rd1"
+        android:text="Online Payment" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rd2"
+        android:layout_centerInParent="true"
+        android:text="OK" />
+</RelativeLayout>

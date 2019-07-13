@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back"
+    tools:context=".BookARoom">
+    <android.support.v7.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_marginTop="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Book a Room"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:clickable="true"
+                    android:editable="false"
+                    android:id="@+id/checkIn"
+                    android:layout_width="180dp"
+                    android:hint="CheckIn"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:editable="false"
+                    android:clickable="true"
+                    android:id="@+id/checkOut"
+                    android:gravity="center"
+                    android:layout_width="180dp"
+                    android:hint="CheckOut"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:hint="No . of guest"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+    <Button
+        android:id="@+id/findRoom"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:text="Find Room"/>
+</LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>
