@@ -100,9 +100,8 @@ public class OrderFood extends AppCompatActivity {
                 dialog.setContentView(R.layout.food_order_confirm);
                 TextView dialogConfirm = dialog.findViewById(R.id.confirm);
                 TextView dialogcancel = dialog.findViewById(R.id.cancel);
-                TextView avb = dialog.findViewById(R.id.availableBalance);
+                final TextView avb = dialog.findViewById(R.id.availableBalance);
                 TextView payb = dialog.findViewById(R.id.payBalance);
-                avb.setText("Available Balance : ");
                 payb.setText("Amount to be paid : " + itemPrice.get(position));
                 // if button is clicked, close the custom dialog
                 dialogcancel.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +124,11 @@ public class OrderFood extends AppCompatActivity {
                                 // This method is called once with the initial value and again
                                 // whenever data at this location is updated.
                                 value = dataSnapshot.getValue(UserDetail.class);
+
+                                avb.setText("Available Balance : " + value.getBalance());
                                 int a = Integer.parseInt(value.getBalance().trim());
                                 int b = Integer.parseInt(itemPrice.get(position).trim().substring(3));
-                                if(a < b){
+                                if(a < 0){
                                     Toast.makeText(OrderFood.this, "Your Amount is not sufficient", Toast.LENGTH_LONG).show();
                                     return;
                                 }

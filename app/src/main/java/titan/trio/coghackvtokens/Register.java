@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,10 +36,11 @@ public class Register extends AppCompatActivity {
     TextView btnLogin;
     Button btnSignup;
     Spinner country;
-
+    RadioGroup rg;
     EditText etName;
     EditText etNumber;
     EditText etEmail;
+    String gender = "Male";
 
 
     String countryy, name, number, email, password;
@@ -47,6 +50,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
+        rg = findViewById(R.id.radioGrp);
 
         etNumber = findViewById(R.id.edtPhone);
         etEmail = findViewById(R.id.edtEmail);
@@ -84,7 +88,23 @@ public class Register extends AppCompatActivity {
     void openfirstActivity() {
 
     }
-
+    public void onRadioButtonClicked() {
+        // Is the button now checked?
+       // boolean checked = ((RadioButton) view).isChecked();
+        int selid = rg.getCheckedRadioButtonId();
+        // Check which radio button was clicked
+        switch(selid) {
+            case R.id.radioM:
+               // if (checked)
+                    gender = "Male";
+                    break;
+            case R.id.radioF:
+               // if (checked)
+                    // Ninjas rule
+                    gender = "Male";
+                    break;
+        }
+    }
     void signUp() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("user");
@@ -92,6 +112,11 @@ public class Register extends AppCompatActivity {
         number = etNumber.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = txtPassword.getText().toString().trim();
+        if(password.length() < 6){
+            txtPassword.setError("Minimum Password length is 6");
+            return;
+        }
+
         if (name != null && !name.isEmpty() && !number.isEmpty() && number.length() == 10 && number != null && email != null && !email.isEmpty()) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -102,7 +127,7 @@ public class Register extends AppCompatActivity {
                                 Log.d("SignUpSuccess", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 String id = user.getUid();
-                                UserDetail usd = new UserDetail(name, number, "male", "0", "0");
+                                UserDetail usd = new UserDetail(name, number, gender, "1", "0");
                                 myRef.child(id).child("detail").setValue(usd);
                                 startActivity(new Intent(Register.this, MainActivity.class));
                                 finish();
@@ -114,6 +139,8 @@ public class Register extends AppCompatActivity {
                             }
                         }
                     });
+        }else{
+            Toast.makeText(Register.this, "Please check details", Toast.LENGTH_SHORT).show();
         }
     }
 

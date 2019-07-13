@@ -64,10 +64,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <EditText
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="No . of guest"
-                android:layout_height="wrap_content" />
+                android:inputType="number" />
 
 
         </LinearLayout>

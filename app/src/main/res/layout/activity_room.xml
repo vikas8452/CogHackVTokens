@@ -175,6 +175,7 @@
             </LinearLayout>
 
     <Button
+        android:id="@+id/book"
         android:text="Book now"
         android:textColor="@color/colorPrimary"
         android:layout_width="match_parent"

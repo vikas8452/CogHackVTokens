@@ -125,29 +125,37 @@
             app:layout_constraintTop_toBottomOf="@id/edtName"
             android:layout_marginLeft="16dp" />
 
-        <ImageView
-            android:id="@+id/imgFemale"
-            android:layout_width="31dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_male"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtGender"
-            tools:ignore="ContentDescription"
-            android:layout_marginLeft="16dp" />
+        <RadioGroup
+            android:id="@+id/radioGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/txtGender"
+            android:paddingTop="64dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" >
 
-        <ImageView
-            android:id="@+id/imgMale"
-            android:layout_width="31dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_male"
-            app:layout_constraintStart_toEndOf="@id/imgFemale"
-            app:layout_constraintTop_toBottomOf="@id/txtGender"
-            tools:ignore="ContentDescription"
-            android:layout_marginLeft="10dp" />
+            <RadioButton
+                android:id="@+id/radioM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:checked="true"
+                android:layout_weight="1"
+                android:textSize="14dp"
+                android:text="Male"
+                />
+            <RadioButton
+                android:id="@+id/radioF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:checked="false"
+                android:layout_weight="1"
+                android:textSize="14dp"
+                android:text="Female"
+                />
+        </RadioGroup>
 
         <TextView
             android:id="@+id/txtNativeLanguage"
@@ -159,7 +167,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgFemale"
+            app:layout_constraintTop_toBottomOf="@id/radioGrp"
             android:layout_marginLeft="16dp" />
 
         <Spinner

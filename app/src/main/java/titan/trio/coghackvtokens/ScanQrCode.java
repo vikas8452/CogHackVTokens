@@ -81,47 +81,55 @@ public class ScanQrCode extends AppCompatActivity {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
+                finish();
             } else {
                 //if qr contains data
                 try {
                     //converting the data to json
                     JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
-                    String id=(obj.getString("id"));
-                    String amount=(obj.getString("amount"));
+                    final String id=(obj.getString("id"));
+                    final String amount=(obj.getString("amount"));
+                    Log.e("Value is: ", id + " hhh "+amount);
 
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("user").child(currentUser.getUid()).child("detail");
+                    final DatabaseReference myRef = database.getReference("user").child(currentUser.getUid()).child("detail");
 
-                    myRef.addValueEventListener(new ValueEventListener() {
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             value = dataSnapshot.getValue(UserDetail.class);
+                            if(id.startsWith("1")) {
+                                Toast.makeText(ScanQrCode.this, "Rs. "+amount+" Debited", Toast.LENGTH_LONG).show();
+                                value.setBalance(Integer.parseInt(value.getBalance().trim()) + Integer.parseInt(amount.trim()) + "");
+                            }else if(id.startsWith("2")){
+                                int a = Integer.parseInt(value.getBalance().trim());
+                                int b = Integer.parseInt(amount.trim());
+                                if(a < 0){
+                                    Toast.makeText(ScanQrCode.this, "Your Amount is not sufficient", Toast.LENGTH_LONG).show();
+                                    finish();
+                                    return;
+                                }
+                                Toast.makeText(ScanQrCode.this, "Rs. "+b+" Debited", Toast.LENGTH_LONG).show();
+                                value.setBalance(a - b + "");
+                            }
+                            myRef.setValue(value);
                             Log.e("Value is: ", value.getBalance());
+                            finish();
                         }
 
                         @Override
                         public void onCancelled(DatabaseError error) {
                             // Failed to read value
                             Log.e("error", "Failed to read value.", error.toException());
+                            finish();
                         }
                     });
 
-                    if(id.startsWith("1")) {
-                        value.setBalance(Integer.parseInt(value.getBalance().trim()) + Integer.parseInt(amount.trim()) + "");
-                    }else if(id.startsWith("2")){
-                        int a = Integer.parseInt(value.getBalance().trim());
-                        int b = Integer.parseInt(amount.trim());
-                        if(b > a){
-                            Toast.makeText(ScanQrCode.this, "Your Amount is not sufficient", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        value.setBalance(b - a + "");
-                    }
-                    myRef.setValue(value);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -130,6 +138,7 @@ public class ScanQrCode extends AppCompatActivity {
                     //in this case you can display whatever data is available on the qrcode
                     //to a toast
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                    finish();
                 }
             }
         } else {

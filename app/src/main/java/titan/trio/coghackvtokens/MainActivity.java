@@ -139,6 +139,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_order_food) {
             startActivity(new Intent(MainActivity.this, OrderFood.class));
+        } else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
