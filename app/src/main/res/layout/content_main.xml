@@ -10,6 +10,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="60dp"
+        android:gravity="center"
+
+        android:fontFamily="serif"
+        android:textColor="#c4121b"
+        android:text="WELCOME\n TO\n CASINO ROYALE !"/>
+
 
 
 </RelativeLayout>

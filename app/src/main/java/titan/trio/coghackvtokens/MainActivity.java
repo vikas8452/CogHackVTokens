@@ -113,8 +113,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-
-
+            startActivity(new Intent(this,BlackJack.class));
 
         } else if (id == R.id.nav_tools) {
 

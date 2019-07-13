@@ -1,7 +1,9 @@
 package titan.trio.coghackvtokens;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ public class BlackJack extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_jack);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edtBetAmmount = findViewById(R.id.edtBetAmmount);
         btnBet = findViewById(R.id.btnBet);
 
@@ -38,4 +41,10 @@ public class BlackJack extends AppCompatActivity {
     private void processAmmount(long ammount){
         //Transfer Money to Agent
     }
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+    }
+
 }
